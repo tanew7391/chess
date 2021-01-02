@@ -1,3 +1,4 @@
+//Deprecated
 #include "Player.hpp"
 
 Player::Player(){
@@ -22,16 +23,12 @@ printf("%s\n", SDL_GetKeyName(event.key.keysym.sym));
     switch (event.key.keysym.sym)
     {
     case SDLK_w:
-        yChange = -1 * speedMod;
         break;
     case SDLK_d:
-        xChange = 1 * speedMod;
         break;
     case SDLK_s:
-        yChange = 1 * speedMod;
         break;
     case SDLK_a:
-        xChange = -1 * speedMod;
         break;
     default:
         break;

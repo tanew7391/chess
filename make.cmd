@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
-set include1=C:\devLibs\SDL2_mingw32\include
-set link1=C:\devLibs\SDL2_mingw32\lib
+set include1=C:\devLibs\SDL2\include
+set link1=C:\devLibs\SDL2\lib
 set extra=.o
 set files=TextureManager GameObject Game main
 
@@ -26,3 +26,5 @@ goto end
 del /p %fileList% main.exe
 
 :end
+
+pause
