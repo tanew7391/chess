@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h> //header file placed in same directory as sdl.h so that it can be compatible
 #include <iostream>
+#include "TileSet.hpp"
 
 class Game{
 
@@ -19,6 +20,8 @@ public:
     static SDL_Renderer* renderer;
 
 private:
+    void initTilePositions();
+    TileSet* pieces;
     int cnt = 0;
     bool isRunning;
     SDL_Window *window;

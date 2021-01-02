@@ -1,23 +1,39 @@
 #include "GameObject.hpp"
 #include "TextureManager.hpp"
 
-GameObject::GameObject(const char* texturesheet, int x, int y){
-    objTexture = TextureManager::LoadTexture(texturesheet);
+GameObject::GameObject(SDL_Texture* texture, int x, int y, TileSet* newTileInfo, int newPieceIdentifier){
+    objTexture = texture;
     xpos = x;
     ypos = y;
+    tileInfo = newTileInfo;
+    pieceIdentifier = newPieceIdentifier;
+    configTileSet();
+}
+
+void GameObject::setScaleFactor(float newScaleFactor){
+    this->scaleFactor = newScaleFactor;
+    configTileSet();
+}
+
+GameObject::~GameObject(){
+
+}
+
+void GameObject::configTileSet(){
+    srcRect.h = tileInfo->tileHeight;
+    srcRect.w = tileInfo->tileWidth;
+    srcRect.x = tileInfo->tileWidth * tileInfo->tilePositions[pieceIdentifier].gridX;
+    srcRect.y = tileInfo->tileHeight * tileInfo->tilePositions[pieceIdentifier].gridY;
+
+    destRect.w = srcRect.w * scaleFactor;
+    destRect.h = srcRect.w * scaleFactor;
 }
 
 void GameObject::Update() {
-    
-    srcRect.h = 256;
-    srcRect.w = 256;
-    srcRect.x = 0;
-    srcRect.y = 0;
 
     destRect.x = xpos;
     destRect.y = ypos;
-    destRect.w = srcRect.w;
-    destRect.h = srcRect.h;
+
 }
 
 void GameObject::Render(){

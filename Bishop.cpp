@@ -1,9 +1,15 @@
 #include "Bishop.hpp"
 
-Bishop::Bishop(int x, int y){
-
+Bishop::Bishop(SDL_Texture *texture, int x, int y, TileSet *newTileInfo, bool isBlack) 
+    : GameObject(texture, x, y, newTileInfo, (isBlack ? BISHOP_B : BISHOP_W))
+{
 }
 
-Bishop::~Bishop(){
-    
+Bishop::~Bishop()
+{
+}
+
+bool Bishop::isMoveValid(int xPos, int yPos) const
+{
+    return true;
 }

@@ -3,7 +3,7 @@ setlocal EnableDelayedExpansion
 set include1=C:\devLibs\SDL2\include
 set link1=C:\devLibs\SDL2\lib
 set extra=.o
-set files=TextureManager GameObject Game main
+set files=TextureManager GameObject Game main Bishop
 
 set x=-1
 

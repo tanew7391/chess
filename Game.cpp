@@ -1,10 +1,11 @@
 #include "Game.hpp"
 #include "TextureManager.hpp"
-#include "GameObject.hpp"
+#include "Bishop.hpp"
 
-GameObject* player;
+GameObject* blackBishop;
 
 SDL_Renderer* Game::renderer = nullptr;
+SDL_Texture* piecesTexture = nullptr;
 
 Game::Game(){
 
@@ -38,9 +39,30 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     } else {
         isRunning = false;
     }
+    initTilePositions();
 
-    player = new GameObject("./assets/player.png", 0, 0);
+    blackBishop = new Bishop(piecesTexture, 0, 0, pieces, true);
+    blackBishop->setScaleFactor(0.5f);
 
+
+}
+
+void Game::initTilePositions(){
+    piecesTexture = TextureManager::LoadTexture("assets/chess_pieces_400_360_1800_800.png");
+    pieces = new TileSet();
+    pieces->tileHeight = 400;
+    pieces->tileWidth = 300;
+    for(int i = 0; i < 2; i++){
+        for(int j = 0; j < 6; j++){
+            pieces->tilePositions[j + (i * 6)].gridY = i; //black y = 0, white y = 1
+        }
+    }
+    pieces->tilePositions[KING_B].gridX = pieces->tilePositions[KING_W].gridX = 3; //King
+    pieces->tilePositions[QUEEN_B].gridX = pieces->tilePositions[QUEEN_W].gridX = 2; //Queen
+    pieces->tilePositions[ROOK_B].gridX = pieces->tilePositions[ROOK_W].gridX = 0; //Rook
+    pieces->tilePositions[BISHOP_B].gridX = pieces->tilePositions[BISHOP_W].gridX = 1; //Bishop
+    pieces->tilePositions[KNIGHT_B].gridX = pieces->tilePositions[KNIGHT_W].gridX = 4; //Knight
+    pieces->tilePositions[PAWN_B].gridX = pieces->tilePositions[PAWN_W].gridX = 5; //Pawn
 
 }
 
@@ -58,18 +80,19 @@ void Game::handleEvents(){
 }
 
 void Game::update(){
-    player->Update();
+    blackBishop->Update();
 }
 
 void Game::render(){
     SDL_RenderClear(renderer);
-    player->Render();
+    blackBishop->Render();
     SDL_RenderPresent(renderer);
 }
 
 void Game::clean(){
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
+    SDL_DestroyTexture(piecesTexture);
     SDL_Quit();
     std::cout << "Game Cleaned!" << std::endl;
 }
