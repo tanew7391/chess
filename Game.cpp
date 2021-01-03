@@ -1,8 +1,10 @@
 #include "Game.hpp"
 #include "TextureManager.hpp"
 #include "Bishop.hpp"
+#include "Player.hpp"
 
-GameObject* blackBishop;
+std::shared_ptr<Player> white;
+std::shared_ptr<Player> black;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Texture* piecesTexture = nullptr;
@@ -40,10 +42,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     initTilePositions();
-
-    blackBishop = new Bishop(piecesTexture, 0, 0, pieces, true);
-    blackBishop->setScaleFactor(0.5f);
-
+    white = std::make_shared<Player>(piecesTexture, pieces, false);
+    black = std::make_shared<Player>(piecesTexture, pieces, true);
 
 }
 
@@ -80,12 +80,14 @@ void Game::handleEvents(){
 }
 
 void Game::update(){
-    blackBishop->Update();
+    white->Update();
+    black->Update();
 }
 
 void Game::render(){
     SDL_RenderClear(renderer);
-    blackBishop->Render();
+    white->Render();
+    black->Render();
     SDL_RenderPresent(renderer);
 }
 
@@ -93,6 +95,7 @@ void Game::clean(){
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(piecesTexture);
+    delete pieces;
     SDL_Quit();
     std::cout << "Game Cleaned!" << std::endl;
 }
