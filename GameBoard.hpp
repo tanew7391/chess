@@ -1,11 +1,11 @@
 #pragma once
 #include "Game.hpp"
-#include "Player.hpp"
+class Player;
 
 class GameBoard
 {
 public:
-    GameBoard(SDL_Texture* newTexture, std::shared_ptr<Player> newWhite, std::shared_ptr<Player> newBlack, int w, int h);
+    GameBoard(SDL_Texture* newTexture, std::shared_ptr<Player> newWhite, std::shared_ptr<Player> newBlack, int w, int h, int screenHeight);
     ~GameBoard();
 
     void update();

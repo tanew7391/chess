@@ -4,8 +4,10 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "TileSet.hpp"
-#include "GameBoard.hpp"
+#define BOARD_RATIO (160/2067)
+struct TileSet;
+class GameBoard;
+class Player;
 
 class Game
 {

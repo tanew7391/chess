@@ -2,6 +2,8 @@
 #include "TextureManager.hpp"
 #include "Bishop.hpp"
 #include "Player.hpp"
+#include "TileSet.hpp"
+#include "GameBoard.hpp"
 
 SDL_Renderer *Game::renderer = nullptr;
 
@@ -47,7 +49,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     initTilePositions();
     white = std::make_shared<Player>(piecesTexture, pieces, false);
     black = std::make_shared<Player>(piecesTexture, pieces, true);
-    theBoard = std::make_shared<GameBoard>(piecesTexture, white, black, 2067, 2067);
+    theBoard = std::make_shared<GameBoard>(gameBoardTexture, white, black, 2067, 2067, height);
 }
 
 void Game::initTilePositions()
@@ -88,6 +90,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
+    theBoard->update();
     white->Update();
     black->Update();
 }
@@ -95,6 +98,7 @@ void Game::update()
 void Game::render()
 {
     SDL_RenderClear(renderer);
+    theBoard->render();
     white->Render();
     black->Render();
     SDL_RenderPresent(renderer);

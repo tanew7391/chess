@@ -1,6 +1,6 @@
 #pragma once
 #include "Game.hpp"
-#include "TileSet.hpp"
+struct TileSet;
 
 class GameObject{
 public:

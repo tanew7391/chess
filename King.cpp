@@ -1,4 +1,5 @@
 #include "King.hpp"
+#include "TileSet.hpp"
 
 King::King(SDL_Texture *texture, int x, int y, TileSet *newTileInfo, bool isBlack) 
     : GameObject(texture, x, y, newTileInfo, (isBlack ? KING_B : KING_W))

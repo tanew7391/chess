@@ -1,4 +1,5 @@
 #include "GameObject.hpp"
+#include "TileSet.hpp"
 #include "TextureManager.hpp"
 
 GameObject::GameObject(SDL_Texture* texture, int x, int y, TileSet* newTileInfo, int newPieceIdentifier){

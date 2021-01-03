@@ -1,4 +1,5 @@
 #include "Queen.hpp"
+#include "TileSet.hpp"
 
 Queen::Queen(SDL_Texture *texture, int x, int y, TileSet *newTileInfo, bool isBlack) 
     : GameObject(texture, x, y, newTileInfo, (isBlack ? QUEEN_B : QUEEN_W))

@@ -1,24 +1,30 @@
 #include "GameBoard.hpp"
+#include "Player.hpp"
 
-GameBoard::GameBoard(SDL_Texture* newTexture, std::shared_ptr<Player> newWhite, std::shared_ptr<Player> newBlack, int w, int h)
-    : texture(newTexture),
-      white(newWhite),
+GameBoard::GameBoard(SDL_Texture *newTexture, std::shared_ptr<Player> newWhite, std::shared_ptr<Player> newBlack, int w, int h, int screenHeight)
+    : white(newWhite),
       black(newBlack),
-      {
-        srcRect.x = 0;
-        srcRect.y = 0;
-        srcRect.h = h;
-        srcRect.w = w;
-      }
+      texture(newTexture)
+{
+  srcRect.x = 0;
+  srcRect.y = 0;
+  srcRect.h = h;
+  srcRect.w = w;
 
-GameBoard::~GameBoard(){
-
+  destRect.x = 0;
+  destRect.y = 0;
+  destRect.h = screenHeight;
+  destRect.w = screenHeight;
 }
 
-
-void GameBoard::update(){
-    
+GameBoard::~GameBoard()
+{
 }
-void GameBoard::render(){
-    
+
+void GameBoard::update()
+{
+}
+void GameBoard::render()
+{
+  SDL_RenderCopy(Game::renderer, texture, &srcRect, &destRect);
 }

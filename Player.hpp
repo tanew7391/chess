@@ -1,12 +1,12 @@
 #pragma once
-#include "GameObject.hpp"
-#include "King.hpp"
-#include "Queen.hpp"
-#include "Bishop.hpp"
-#include "Rook.hpp"
-#include "Knight.hpp"
-#include "Pawn.hpp"
-
+#include "Game.hpp"
+class GameObject;
+class King;
+class Queen;
+class Rook;
+class Bishop;
+class Knight;
+class Pawn;
 
 class Player {
 

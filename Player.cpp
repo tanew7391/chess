@@ -1,4 +1,13 @@
 #include "Player.hpp"
+#include "King.hpp"
+#include "Queen.hpp"
+#include "Bishop.hpp"
+#include "Rook.hpp"
+#include "Knight.hpp"
+#include "Pawn.hpp"
+#include "GameObject.hpp"
+
+
 
 Player::Player(SDL_Texture* newPiecesTexture, TileSet* newTileInfo, bool newIsBlack)
  : piecesTexture(newPiecesTexture),

@@ -3,7 +3,7 @@ setlocal EnableDelayedExpansion
 set include1=C:\devLibs\SDL2\include
 set link1=C:\devLibs\SDL2\lib
 set extra=.o
-set files=TextureManager GameObject Game main Player King Queen Rook Bishop Knight Pawn
+set files=TextureManager GameObject Game main Player King Queen Rook Bishop Knight Pawn GameBoard
 set flags=-std=c++17 -Wextra -Wall
 
 set x=-1
