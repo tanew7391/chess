@@ -12,7 +12,7 @@ int main(int argc, char * argv[]){
 
 
     game = new Game();
-    game->init("Taylor's game", 0, 0, 800, 640, false);
+    game->init("Taylor's game", 0, 0, 1700, 1080, false);
     while(game->running()){
         frameStart = SDL_GetTicks();
 

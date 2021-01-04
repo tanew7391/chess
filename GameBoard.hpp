@@ -1,5 +1,5 @@
 #pragma once
-#define GRID_00 ((float) 174/2062)
+#define GRID_00 ((float) 345/4124)
 #define GRID_11 ((float) 347/2062)
 #define GRID_22 ((float) 519/2062)
 #define GRID_33 ((float) 691/2062)
@@ -31,15 +31,19 @@ class GameBoard
 public:
     GameBoard(SDL_Texture* newTexture, std::shared_ptr<Player> newWhite, std::shared_ptr<Player> newBlack, int w, int h, int screenHeight);
     ~GameBoard();
+    static Point getPositionFromGrid(Point gridPosition);
+    void setScreenHeight(int h);
 
     void update();
     void render();
 
 private:
+    void initBoard();
+    inline static int screenHeight = 0;
     std::shared_ptr<Player> white;
     std::shared_ptr<Player> black;
     SDL_Texture* texture;
     SDL_Rect srcRect,destRect;
-    HashMap<Point, GameObject*, KeyHash, 64> boardHashMap; //64 being size of chess grid
+    HashMap<Point, std::shared_ptr<GameObject>, KeyHash, 64> boardHashMap; //64 being size of chess grid
 
 };

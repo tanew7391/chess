@@ -4,10 +4,10 @@
 class Knight: public GameObject
 {
 public:
-    Knight(SDL_Texture* texture, int x, int y, TileSet* newTileInfo, bool isBlack);
+    Knight(SDL_Texture* texture, Point newGridPosition, TileSet* newTileInfo, bool isBlack);
     ~Knight();
 
-    bool isMoveValid(int xPos, int yPos) const;
+    bool isMoveValid(Point move) const;
 
 private:
 

@@ -4,10 +4,10 @@
 class Bishop: public GameObject
 {
 public:
-    Bishop(SDL_Texture* texture, int x, int y, TileSet* newTileInfo, bool isBlack);
+    Bishop(SDL_Texture* texture, Point newGridPosition, TileSet* newTileInfo, bool isBlack);
     ~Bishop();
 
-    bool isMoveValid(int xPos, int yPos) const;
+    bool isMoveValid(Point move) const;
 
 private:
 

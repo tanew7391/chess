@@ -16,11 +16,16 @@ public:
     void init();
     void Update();
     void Render();
+    std::vector<std::shared_ptr<GameObject>> getPiecesInPlay() const{
+        return pieces;
+    }
     bool getIsBlack() const;
     bool makeMove(int xPos, int yPos, int destXpos, int destYPos);
 
 
 private:
+    void initPawnRow();
+    void initNobleRow();
     SDL_Texture* piecesTexture;
     TileSet* piecesTileInfo;
     std::shared_ptr<King> king;
