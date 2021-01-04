@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#define BOARD_RATIO (160/2067)
+#define BOARD_RATIO ((float) 160/2062)
 struct TileSet;
 class GameBoard;
 class Player;

@@ -47,8 +47,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
     initTilePositions();
-    white = std::make_shared<Player>(piecesTexture, pieces, false);
-    black = std::make_shared<Player>(piecesTexture, pieces, true);
+    float pieceScale = ((float)(BOARD_RATIO * height)/pieces->tileHeight); //Takes the ratio of board height to grid tile height 
+                                                                           //and divides it by piece height to get scale factor for piece
+    white = std::make_shared<Player>(piecesTexture, pieces, false, pieceScale);
+    black = std::make_shared<Player>(piecesTexture, pieces, true, pieceScale);
     theBoard = std::make_shared<GameBoard>(gameBoardTexture, white, black, 2067, 2067, height);
 }
 

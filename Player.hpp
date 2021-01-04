@@ -11,7 +11,7 @@ class Pawn;
 class Player {
 
 public:
-    Player(SDL_Texture* newPiecesTexture, TileSet* newTileInfo, bool newIsBlack);
+    Player(SDL_Texture* newPiecesTexture, TileSet* newTileInfo, bool newIsBlack, float scaleFactor);
     ~Player();
     void init();
     void Update();

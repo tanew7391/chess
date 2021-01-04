@@ -12,13 +12,7 @@
 #define KNIGHT_W 10
 #define PAWN_W 11
 
-
-
-
-struct Point{
-    int gridX;
-    int gridY;
-};
+#include "Point.hpp"
 
 /**
  * TileSet information for a single texture.

@@ -9,12 +9,15 @@
 
 
 
-Player::Player(SDL_Texture* newPiecesTexture, TileSet* newTileInfo, bool newIsBlack)
+Player::Player(SDL_Texture* newPiecesTexture, TileSet* newTileInfo, bool newIsBlack, float scaleFactor)
  : piecesTexture(newPiecesTexture),
    piecesTileInfo(newTileInfo),
    isBlack(newIsBlack)
 {
     init();
+    for(std::shared_ptr<GameObject> piece : pieces){
+        piece->setScaleFactor(scaleFactor);
+    }
 }
 
 Player::~Player()

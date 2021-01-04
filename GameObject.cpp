@@ -26,8 +26,8 @@ void GameObject::configTileSet(){
     srcRect.x = tileInfo->tileWidth * tileInfo->tilePositions[pieceIdentifier].gridX;
     srcRect.y = tileInfo->tileHeight * tileInfo->tilePositions[pieceIdentifier].gridY;
 
-    destRect.w = srcRect.w * scaleFactor;
-    destRect.h = srcRect.w * scaleFactor;
+    destRect.w = (int)(srcRect.w * scaleFactor);
+    destRect.h = (int)(srcRect.h * scaleFactor);
 }
 
 void GameObject::Update() {
